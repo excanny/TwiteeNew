@@ -13,7 +13,12 @@ twits /and like them.
 
 ## Routes Overview
 
-| HTTP Verb    | Route          | Action | Used For    |
-| :---:         |     :---:      |         :---: | :---: |
-| POST   | '/register'     | register action    | route to create a new user account   |
-| git diff     | git diff       | git diff      |git status    |
+| HTTP Verb    | Route          | Action | Used For    | Request | Expected Response |
+| :---:         |     :---:      |         :---: | :---: | | :---: | | :---: |
+| POST   | '/register'     | register action    | route to create a new user account   | {"name": "string", "email" : "string","password" : "string"} | {"status": true,"message": "User created successfully" |
+}
+| POST    | '/login'      | login action     |route to login    |route to login    | route to login    |
+| POST   | '/create/twit'     | craete twit action    | route to create a new twit   |route to login    |route to login    |
+| POST    | '/login'       | login action     |route to login    | route to login    |route to login    |
+| POST   | '/register'     | register action    | route to create a new user account   |route to login    |route to login    |
+| POST    | '/login       | login action     |route to login    |route to login    |route to login    |
