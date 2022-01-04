@@ -1,12 +1,19 @@
 const bcrypt = require('bcryptjs');
 const nodemailer = require('nodemailer');
 const jwt = require("jsonwebtoken");
+const { body, validationResult } = require('express-validator');
 
 const User = require('../models/userModel');
 
 const register = (req, res) => {
 
-    const { name, email, password } = req.body;
+    const { name, email, password, password2 } = req.body;
+
+    if (!String(name).trim()) return res.status(400).json({status: false, message: "Name is required"});
+    if (!(/^[\-0-9a-zA-Z\.\+_]+@[\-0-9a-zA-Z\.\+_]+\.[a-zA-Z]{2,}$/).test(String(email))) return res.status(400).json({status: false, message: "Email is not valid"});
+    if (!String(password).trim()) return res.status(400).json({status: false, message: "Password is required"});
+    if (!String(password2).trim()) return res.status(400).json({status: false, message: "Confirm password is required"});
+    if(password != password2) return res.status(400).json({message: "password not match"});
 
     User.findOne({ email }, async (err, data) => {
 
@@ -57,7 +64,7 @@ const register = (req, res) => {
 
         }else{
             if(err) return res.json(`Something went wrong, please try again. ${err}`);
-            return res.json({message:"User already exists. Login"});
+            return res.json({status: false, message:"User already exists. Login"});
         }
     })    
     
@@ -67,11 +74,9 @@ const login = async (req, res) => {
     try {
 
             const { email, password } = req.body;
-        
-            if (!(email && password)) 
-            {
-                res.status(400).json("All input is required");
-            }
+
+            if (!(/^[\-0-9a-zA-Z\.\+_]+@[\-0-9a-zA-Z\.\+_]+\.[a-zA-Z]{2,}$/).test(String(email))) return res.status(400).json({status: false, message: "Email is not valid"});
+            if (!String(password).trim()) return res.status(400).json({status: false, message: "Password is required"});
 
             const user = await User.findOne({ email });
         
@@ -88,9 +93,8 @@ const login = async (req, res) => {
                 // return token
                 res.status(200).json({token: token});
 
-            }else
-            {
-                res.status(400).json("Invalid Credentials");
+            }else{
+                res.status(400).json({"status": false, "message": "Invalid Credentials"});
             }
 
         } catch (err) 

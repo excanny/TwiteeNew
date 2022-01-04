@@ -11,6 +11,9 @@ const createTwit = (req, res) => {
     const decoded = jwt_decode(usertoken);
     const user_id = decoded.user_id;
 
+    if (!String(title).trim()) return res.status(400).json({status: false, message: "title field is required"});
+    if (!String(body).trim()) return res.status(400).json({status: false, message: "body field is required"});
+
     const newTwit = new Twit({
         title,
         body,
@@ -33,6 +36,9 @@ const addTwitComment = (req, res) => {
     const user_id = decoded.user_id; 
     const twit_id = req.body.twit_id; 
     const comment = req.body.comment;
+
+    if (!String(twit_id).trim()) return res.status(400).json({status: false, message: "twit_id field is required"});
+    if (!String(comment).trim()) return res.status(400).json({status: false, message: "comment field is required"});
    
     const newTwitComment = {
         user_id: user_id,
@@ -66,6 +72,8 @@ const addTwitLike = (req, res) => {
 
     const user_id = decoded.user_id; 
     const twit_id = req.body.twit_id; 
+
+    if (!String(twit_id).trim()) return res.status(400).json({status: false, message: "twit_id field is required"});
    
     const newTwitLike = {
         user_id: user_id,
@@ -88,6 +96,8 @@ const addTwitLike = (req, res) => {
                     return res.json(data);
                 }) 
            }
+
+           return res.json(data);
     
         } 
     })
@@ -118,6 +128,8 @@ const deleteTwit = (req, res) => {
     let {id} = req.body;
     const usertoken = req.headers.authorization;
     const decoded = jwt_decode(usertoken);
+
+    if (!String(id).trim()) return res.status(400).json({status: false, message: "twit_id field is required"});
 
     const user_id = decoded.user_id; 
 
