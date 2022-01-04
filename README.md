@@ -11,6 +11,9 @@ TWITEE is a mini and substandard runoff of Twitter. Users register and login and
 anything that crosses their mind. The whole world can view their twits and comment on their
 twits /and like them. 
 
+## Using Twitee on POSTMAN
+After the JWT is generated upon a successful login, use "Authorization : 'generated.token.value'" to access the protected routes in POSTMAN
+
 ## Routes Overview
 
 | HTTP Verb    | Route          | Action | Used For    | Request | Expected Response/Action |
