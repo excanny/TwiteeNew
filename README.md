@@ -14,7 +14,7 @@ twits /and like them.
 ## Routes Overview
 
 | HTTP Verb    | Route          | Action | Used For    | Request | Expected Response |
-| :---:         |     :---:      |         :---: | :---: | | :---: | | :---: |
+| :---:         |     :---:      |         :---: | :---: |  :---: | :---: |
 | POST   | '/register'     | register action    | route to create a new user account   | {"name": "string", "email" : "string","password" : "string"} | {"status": true,"message": "User created successfully" |
 }
 | POST    | '/login'      | login action     |route to login    |route to login    | route to login    |
