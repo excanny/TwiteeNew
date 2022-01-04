@@ -13,7 +13,7 @@ twits /and like them.
 
 ## Routes Overview
 
-| HTTP Verb | Route | Action | Used For |
-| :---         |     :---:      |          ---: |
-| git status   | git status     | git status    |
-| git diff     | git diff       | git diff      |
+| HTTP Verb    | Route          | Action | Used For    |
+| :---         |     :---:      |          ---: | ---: |
+| git status   | git status     | git status    | git status    |
+| git diff     | git diff       | git diff      |git status    |
