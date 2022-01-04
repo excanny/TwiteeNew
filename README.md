@@ -12,7 +12,7 @@ anything that crosses their mind. The whole world can view their twits and comme
 twits /and like them. 
 
 ## Using Twitee on POSTMAN
-After the JWT is generated upon a successful login, use "Authorization : 'generated.token.value'" to access the protected routes in POSTMAN
+After the JWT is generated upon a successful login, use "Authorization : 'generated.jwttoken.value'" to access the protected routes in POSTMAN
 
 ## Routes Overview
 
