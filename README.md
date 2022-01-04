@@ -15,5 +15,5 @@ twits /and like them.
 
 | HTTP Verb    | Route          | Action | Used For    |
 | :---         |     :---:      |          ---: | ---: |
-| git status   | git status     | git status    | git status    |
+| POST   | '/register'     | register action    | route to create a new user account   |
 | git diff     | git diff       | git diff      |git status    |
